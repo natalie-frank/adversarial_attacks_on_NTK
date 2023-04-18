@@ -92,7 +92,7 @@ def main():
         
         
         # Parent Directory path
-        parent_parent_dir = "models_final"
+        parent_parent_dir = "models"
         parent_dir="binary_sigmoid_models"
         # Directory
 

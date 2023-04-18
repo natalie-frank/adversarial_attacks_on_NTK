@@ -252,11 +252,13 @@ def black_box_attacks_plots_vs_eps(eps_list,nets,svms,nets_examples,svms_example
     pickle.dump(variables_dict,file)
     file.close()
 
-#helper function for plotting mean error with standard deviations
+
 #eps_list: list of perturbation radiuses to plot on x-axis
 #means: list of mean error at each perturbation radius
 #stds: list of standard deviations at each perturbation radius
 #color: color for plotting lines
+
+#helper function for plotting mean error with standard deviations
 def plot_non_matching_error(eps_list,means,stds,color,label):
     plt.plot(eps_list,means,color=color,label=label )#plot mean error of nets
     plt.scatter(eps_list,means,color=color,label="_"+label+"_dots")
@@ -286,14 +288,16 @@ def average_non_matching_attack_mean_and_stds(adversarial_examples,test_models,t
     
 
 
-#loads pre-trained models, extracts the associated ntks, and trains the associated svms. Returns a list of models and a list of 
+
 #eps: the radius of perturbation used in adversarial training
 #train_set: the data set on which to compute the NTK. can be a data set object or a list of (x,label) pairs
+
+#loads pre-trained models, extracts the associated ntks, and trains the associated svms. Returns a list of neural nets and a list of svms
 def load_models(eps,train_set):
     Y=[label for (x,label) in train_set]
 
     trial_name_base="trial"
-    parent_parent_dir="models_final"
+    parent_parent_dir="models"
     parent_dir = "binary_sigmoid_models"
     models_list=[]
     svm_list=[]
@@ -349,10 +353,12 @@ def classification_error_under_attack(adversarial_examples,test_model,test_model
 
 
 
-#function for predicting the output of a model at a point x
+
 #model:either a neural net or a binary_torch_SVM
 #x: a tensor at which we want the model prediction
 #neural_net: true if model is a neural net, false if it is a binary_torch_SVM
+
+#function for predicting the output of a model at a point x
 def predict(model, x, neural_net):
     y=model(x)[0]
     if neural_net:
@@ -399,16 +405,18 @@ def main():
             mnist_test_sbset.append((data,0))
     
 
-#uncomment these lines to test the code on a small portion of MNIST
-    mnist_train_sbset=mnist_train_sbset[0:10]
-    mnist_test_sbset=mnist_test_sbset[0:2]
+
 
 
     #list of perturbation radiuses for which the models were trained
     eps_list=[0,0.05,0.1,0.15,0.2,0.25, 0.3]
 
+#uncomment these lines to test the code on a small portion of MNIST
+    #mnist_train_sbset=mnist_train_sbset[0:10]
+    #mnist_test_sbset=mnist_test_sbset[0:2]
+
     #uncomment the following line to test on a smaller number of epsilons
-    eps_list=[0,0.05,0.1]
+    #eps_list=[0,0.05,0.1]
 
     nets=[]
     svms=[]
@@ -434,7 +442,7 @@ def main():
     
 
     #create folders for adversarial examples they it dosn't already exist
-    examples_parent_dir="binary_sigmoid_models_adversarial_examples"
+    examples_parent_dir=os.path.join("adversarial_examples","binary_sigmoid_models_adversarial_examples")
     nets_parent_dir=os.path.join(examples_parent_dir,"nets")
     svms_parent_dir=os.path.join(examples_parent_dir,"svms")
     basic_methods.exist_and_create_dir(examples_parent_dir)
@@ -477,9 +485,9 @@ def main():
 
 
     #create folder for plots if it doesn't already exist
-    plots_parent_dir=os.path.join("models_final","binary_sigmoid_models","plots")
-    if not os.path.exists(plots_parent_dir):
-        os.mkdir(plots_parent_dir)
+    plots_parent_dir=os.path.join("plots","binary_sigmoid_models")
+    basic_methods.exist_and_create_dir("plots")
+    basic_methods.exist_and_create_dir(plots_parent_dir)
     
     #make plots for each of the attacks
     white_box_attacks_plots_vs_eps(eps_list,nets,svms,nets_examples,svms_examples,save_fig_folder=plots_parent_dir)

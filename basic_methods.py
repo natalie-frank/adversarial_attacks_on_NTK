@@ -6,10 +6,10 @@ import platform
 
 #sets current working directory
 def set_cwd():
-    if platform.platform() == "Windows-10-10.0.19041-SP0":
-        cwd=os.path.join("C:\\Users","Natalie Frank","Documents","PNNL code","bitbucket")
-    else:
-        cwd="todo"#todo
+    if platform.platform() == "Windows-10-10.0.19045-SP0":#current working directory on your local computer
+        cwd=os.path.join("C:\\Users","Natalie","Documents","PNNL code","bitbucket")
+    else: #current working directory on cluster
+        cwd=os.path.join(os.sep,"rcfs","projects","task0_pmm","natnew")
     os.chdir(cwd)
 
 #checkes if the directory dir_name exists, and creates it if it doesn't
@@ -40,4 +40,3 @@ def predict_class(net, xs, class_names=None):
 def plot_grayscale(x):
     pyplot.imshow(x, cmap=pyplot.get_cmap('gray'))
     pyplot.show()
-

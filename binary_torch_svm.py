@@ -38,16 +38,6 @@ class binary_torch_SVM(nn.Module):
             return tnsr 
 
 
-        #predicts the class of a list or tensor of x values
-        #outputs 0 or 1
-        def predict(self,x_list):
-            y_list=[0]*len(x_list)
-            vals=self.forward(x_list)
-            for i in range(len(x_list)):
-                val=vals[i]
-                if val.item()>0:
-                    y_list[i]=1
-            return np.array(y_list)
 
             
             
