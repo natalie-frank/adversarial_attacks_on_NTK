@@ -64,7 +64,7 @@ def main():
         elif label==7:
             mnist_train_sbset.append((data,0))
     
-    master_seed= int(time.time())+hash(trial_name)
+    master_seed= int(time.time())+abs(hash(trial_name))
     torch.manual_seed(master_seed)
     for epsilon in eps_list:
         seed=torch.randint(10**9,(1,1)).item()
