@@ -63,8 +63,11 @@ def main():
             mnist_train_sbset.append((data,label))
         elif label==7:
             mnist_train_sbset.append((data,0))
+    
+    master_seed= int(time.time())+hash(trial_name)
+    torch.manual_seed(master_seed)
     for epsilon in eps_list:
-        seed= int(time.time())
+        seed=torch.randint(10**9,(1,1)).item()
         torch.manual_seed(seed)
         start=time.time()
         train_loader = torch.utils.data.DataLoader(mnist_train_sbset,batch_size=64, shuffle=True)
