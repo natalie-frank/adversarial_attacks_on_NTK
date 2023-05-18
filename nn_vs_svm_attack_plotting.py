@@ -289,7 +289,7 @@ def black_box_attacks_plots_vs_eps(eps_list,nets,svms,nets_examples,svms_example
 #helper function for plotting mean error with standard deviations
 def plot_error_lines(eps_list,means,stds,color,label,marker):
     plt.plot(eps_list,means,color=color,label="_"+label )#plot mean error of nets
-    plt.scatter(eps_list,means,color=color,label=label+"_dots",marker=marker)
+    plt.scatter(eps_list,means,color=color,label=label ,marker=marker)
     nn_upper_sd=[means[i]+2*stds[i] for i in range(len(eps_list))]
     nn_lower_sd=[means[i]-2*stds[i] for i in range(len(eps_list))]
     plt.plot(eps_list, nn_upper_sd, label="_"+label+"_upper_sd",linestyle="--",color=color)
@@ -443,11 +443,11 @@ def main():
     eps_list=[0,0.05,0.1,0.15,0.2,0.25, 0.3]
 
 #uncomment these lines to test the code on a small portion of MNIST
-    mnist_train_sbset=mnist_train_sbset[0:10]
-    mnist_test_sbset=mnist_test_sbset[0:2]
+    #mnist_train_sbset=mnist_train_sbset[0:10]
+    #mnist_test_sbset=mnist_test_sbset[0:2]
 
     #uncomment the following line to test on a smaller number of epsilons
-    eps_list=[0,0.05,0.1]
+    #eps_list=[0,0.05,0.1]
 
     nets=[]
     svms=[]
