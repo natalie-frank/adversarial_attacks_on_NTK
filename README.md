@@ -48,9 +48,9 @@ We test our models against two white-box attacks and a black box attack. (Left) 
 
 ## To train your own neural nets:
 1. Open a terminal and navigate to the directory ``adversarial_attacks_on_NTK``
-2. Run 
+2. For ``i`` between 0 and 10, run
    ```
-   TODO
+   python train_binary_MNIST_sigmoid_networks.py trial{i}
    ```
    For trial ``i`` models and model metadata will appear in the folder ``models/binary_sigmoid_models/'trial{i}'``
 
