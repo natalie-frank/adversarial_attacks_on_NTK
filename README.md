@@ -4,14 +4,14 @@
 
 Descriptions of files included in this repository:
 
-In the "Limitations" section of our paper TODO HYPERLINK, we compare the robustness of neural nets and SVMs trained using the NTK feature mapping. Our experiments show that neural nets are more robust than the associated SVMs. 
+In the "Limitations" section of our [paper](http://export.arxiv.org/abs/2305.14585), we compare the robustness of neural nets and SVMs trained using the NTK feature mapping. Our experiments show that neural nets are more robust than the associated SVMs. 
 
 
 
 <p float="left">
-  <img src="plots_in_pNTK_paper/white_box.png" width="200" />
-  <img src="plots_in_pNTK_paper\grey_box.png" width="200" /> 
-  <img src="plots_in_pNTK_paper\black_box.png" width="200" />
+  <img src="pNTK_paper_plots/white_box.png" width="200" />
+  <img src="pNTK_paper_plots\grey_box.png" width="200" /> 
+  <img src="pNTK_paper_plots\black_box.png" width="200" />
 </p>
 
 
